@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="../css/style.css">
+	<title>Задача 3</title>
+</head>
+
+<body>
+	<h1>Задача 3</h1>
+
+	<p>
+		Дано вартість одиниці товару і кількість.
+		Знайти загальну вартість та ПДВ (5% від загальної вартості).
+	</p>
+
+	<script>
+		// 0. Позначення величин
+		// price - вартість одиниці товару
+		// quantity - кількість товару
+		// vatTax - розмір ПДВ %
+		// totalСost - загальнa вартість
+		// taxCost - вартість ПДВ 
+
+		// 1. Вводимо необхідні дані
+		const price = parseFloat(prompt("Введіть вартість товару в грн", ""))
+		const quantity = parseInt(prompt("Введіть кількість товару", ""))
+		const vatTax = 5;
+
+		// 2. Знаходимо результат
+		const totalСost = price * quantity;
+		const taxCost = totalСost * vatTax / 100;
+
+		// 3. Виводимо результат
+		document.write(`
+			<p>Загальнa вартість товару = ${totalСost} грн.</p>
+			<p>ПДВ = ${taxCost} грн.</p>
+		`)
+	</script>
+</body>
+
+</html>

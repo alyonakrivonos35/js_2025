@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="../css/style.css">
+	<title>Задача 7</title>
+</head>
+
+<body>
+	<h1>Задача 7</h1>
+
+	<p>
+		Знайти суму випадкового номера місяця (від 1 до 12) та випадкового номера дня (від 0 до 6).
+	</p>
+
+	<script>
+		// 0. Позначення величин
+		// month - випадковий номер місяця (від 1 до 12)
+		// day - випадковий номера дня (від 0 до 6)
+		// sum - сума month і day
+
+
+		// 1. Вводимо необхідні дані
+		const month = Math.floor(Math.random() * 12) + 1
+		const day = Math.floor(Math.random() * 7)
+
+		// 2. Знаходимо результат
+		const sum = month + day
+
+		// 3. Виводимо результат
+		document.write(`
+			Cума = ${sum}
+		`)
+	</script>
+
+</body>
+
+</html>
