@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="../css/style.css">
+	<title>Задача 3</title>
+</head>
+
+<body>
+	<h1>Задача 3</h1>
+
+	<p>
+		3. Випадковим чином генерується число від 1 до 5. Спробуйте вгадати число за 2 спроби.
+	</p>
+
+	<script>
+		// 0. Позначення величин
+		// randomNumber - рандомне число від 1 до 5
+		// userNumber1 - перше введене число
+		// userNumber2 - друге введене число
+
+		// 1. Вводимо необхідні дані
+		const randomNumber = Math.floor(Math.random() * 5) + 1;
+		const userNumber1 = parseInt(prompt('Вгадайте число від 1 до 5'))
+
+		// 2. Знаходимо результат
+		// 3. Виводимо результат
+
+		if (randomNumber === userNumber1)
+			document.write('Чудово, відповіть вірна')
+		else {
+			const userNumber2 = parseInt(prompt('Спробуйте ще. Вгадайте число від 1 до 5'))
+			if (randomNumber === userNumber2)
+				document.write('Чудово, відповіть вірна')
+			else document.write('Нажаль відповідь невірна')
+		}
+
+	</script>
+</body>
+
+</html>
