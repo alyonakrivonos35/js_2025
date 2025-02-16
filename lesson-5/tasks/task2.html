@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="../css/style.css">
+	<title>Задача 2</title>
+</head>
+
+<body>
+	<h1>Задача 2</h1>
+
+	<p>
+		Вивести таблицю
+	</p>
+
+	<script>
+		// 0. Позначення величин
+		//  tdNum - номер комірки
+
+		if (confirm('Почати тестування?')) {
+			// 1. Вводимо необхідні дані
+			// 2. Знаходимо результат
+			// 3. Виводимо результат
+
+			let tdNum = 1
+
+			document.write(`<table border = "2px">`)
+
+			for (let tr = 1; tr <= 3; tr++) {
+				document.write(`<tr>`)
+				for (let td = 1; td <= 3; td++) {
+					document.write(`<td>${tdNum}</td>`)
+					tdNum++
+				}
+				document.write(`</tr>`)
+			}
+			document.write(`</table>`)
+		}
+
+	</script>
+</body>
+
+</html>

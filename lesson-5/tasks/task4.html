@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="../css/style.css">
+	<title>Задача 4</title>
+</head>
+
+<body>
+	<h1>Задача 4</h1>
+
+	<p>
+		Користувач загадує число.
+		Комп’ютер задає питання поки не вгадає число користувача (використати confirm).
+	</p>
+
+	<script>
+		// 0. Позначення величин
+		//  number - число, яке генерує комп'ютер
+		//
+
+		if (confirm('Почати тестування?')) {
+			// 1. Вводимо необхідні дані
+			// 2. Знаходимо результат
+			// 3. Виводимо результат
+			let number
+			do {
+				number = 1 + Math.floor(Math.random() * 10)
+			} while (!confirm(`Ти загадав число ${number}?`))
+			document.write(`Ти загадав ${number}.`)
+		}
+
+	</script>
+</body>
+
+</html>

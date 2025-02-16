@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="../css/style.css">
+	<title>Задача 5</title>
+</head>
+
+<body>
+	<h1>Задача 5</h1>
+
+	<p>
+		Знайти суму всіх непарних чисел, що знаходяться між заданими користувачем числами.
+	</p>
+
+	<script>
+		// 0. Позначення величин
+		// minNumber - мінімальне число
+		// maxNumber - максимальне число
+		// oddSum - сума непарних чисел, що знаходяться між заданими користувачем числами
+		// startNumber - перше непарне число
+
+		if (confirm('Почати тестування?')) {
+			// 1. Вводимо необхідні дані
+
+			const minNumber = parseInt(prompt('Введіть мінімальне число'))
+			const maxNumber = parseInt(prompt('Введіть максимальне число'))
+			let oddSum = 0
+
+			// 2. Знаходимо результат
+			let startNumber = minNumber % 2 !== 0 ? minNumber + 0 : minNumber + 1
+
+			for (let n = startNumber; n <= maxNumber; n += 2) {
+				oddSum += n
+			}
+			// 3. Виводимо результат
+			document.write(`Сума всіх непарних чисел між числом ${minNumber} та ${maxNumber} = ${oddSum}`)
+		}
+
+	</script>
+</body>
+
+</html>
