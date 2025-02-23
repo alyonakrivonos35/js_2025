@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="../css/style.css">
+	<title>Задача 1</title>
+</head>
+
+<body>
+	<h1>Задача 1</h1>
+
+	<p>
+		6. Інвестор вклав S тис. грн на 20 років під 20% річних, податок складає 5% від суми прибутку.
+		Визначити за допомогою циклів суму, яку він одержить.
+	</p>
+
+	<script>
+		// 0. Позначення величин
+		// initialInvestment - Початкова сума грн
+		// years - Кількість років
+		// interestRate - 20% річних
+		// taxRate - 5% податок на прибуток
+		// totalAmount - Загальна сума
+		// profit - прибуток за рік
+		// tax - сума податку
+
+		if (confirm('Почати тестування?')) {
+			// 1. Вводимо необхідні дані
+			const initialInvestment = parseFloat(prompt('Введіть початкову суму інвестиції'))
+			const years = 20
+			const interestRate = 0.2
+			const taxRate = 0.05
+
+			let totalAmount = initialInvestment
+
+			// 2. Знаходимо результат
+
+			for (let i = 1; i <= years; i++) {
+				let profit = totalAmount * interestRate
+				let tax = profit * taxRate
+				totalAmount += (profit - tax)
+			}
+
+			// 3. Виводимо результат
+			document.write(`Ви одержите: ${totalAmount.toFixed(2)} грн`)
+		}
+
+	</script>
+</body>
+
+</html>
