@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="../css/style.css">
+	<title>Задача 8</title>
+</head>
+
+<body>
+	<h1>Задача 8</h1>
+	<div>
+		Створити функцію, яка виводить банер (у функцію передаються: зображення, заголовок та посилання, куди
+		переходимо при кліку на зображення (тег img повине знаходитись у середині тега a:
+		&lt;a&gt;&lt;img src="шлях"&gt;&lt;/a&gt;
+	</div>
+	<script>
+
+		if (confirm('Почати тестування?')) {
+			function displaysBanner(img, title, link) {
+				document.write(`
+					<a href="${link}" target="_blank">
+					<img src="${img}" alt="#" width="300px">
+					<h2>${title}</h2>
+					</a>
+				`)
+			}
+
+			displaysBanner('../image/03.jpg', 'Функція, яка виводить банер', 'http://google.com')
+		}
+	</script>
+</body>
+
+</html>

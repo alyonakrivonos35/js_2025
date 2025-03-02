@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="../css/style.css">
+	<title>Задача 6</title>
+</head>
+
+<body>
+	<h1>Задача 6</h1>
+
+	<div>
+		Створити функцію, яка створює таблицю з вказаною кількістю
+		рядків і стовпців (таблиця заповнюється заданим фіксованим повідомленням).
+	</div>
+
+	<script>
+
+		if (confirm('Почати тестування?')) {
+
+			function createTable(rows, columns, text) {
+				let tdNum = 1
+
+				document.write(`<table border = "1px">`)
+
+				for (let tr = 1; tr <= rows; tr++) {
+					document.write(`<tr>`)
+					for (let td = 1; td <= columns; td++) {
+						document.write(`<td>${text}</td>`)
+						tdNum++
+					}
+					document.write(`</tr>`)
+				}
+				document.write(`</table>`)
+			}
+
+			createTable(5, 3, 'js')
+		}
+	</script>
+</body>
+
+</html>

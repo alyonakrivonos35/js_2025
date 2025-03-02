@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="../css/style.css">
+	<title>Задача 5</title>
+</head>
+
+<body>
+	<h1>Задача 5</h1>
+
+	<div>
+		Створити окремі функції, які переводять:
+		1. Сантиметри у дюйми;
+		2. Кілограми у фунти;
+		3. Кілометри у милі.
+	</div>
+
+	<script>
+
+		if (confirm('Почати тестування?')) {
+			function centimetersToInches(centimeters) {
+				return centimeters / 2.54
+			}
+
+			function kilogramsToPounds(kilograms) {
+				return kilograms * 2.2046
+			}
+
+			function kilometersToMiles(kilometers) {
+				return kilometers * 0.6214
+			}
+
+			document.write(`60 см у дюймах:, ${centimetersToInches(60).toFixed(2)}<br>`)
+			document.write(`10 кг у фунтах:, ${kilogramsToPounds(10).toFixed(2)}<br>`)
+			document.write(`5 км у милях:, ${kilometersToMiles(5).toFixed(2)}<br>`);
+
+		}
+	</script>
+</body>
+
+</html>
