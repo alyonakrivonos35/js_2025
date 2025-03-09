@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="../css/style.css">
+	<title>Задача 5</title>
+</head>
+
+<body>
+	<h1>Задача 5</h1>
+
+	<p>
+		Дано послідовність оцінок учня. Підрахувати кількість:
+		1) двійок
+		2) кількість хороших оцінок (добре, відмінно);
+		3) кількість оцінок, які нижче середнього.
+	</p>
+
+	<script>
+
+		if (confirm('Почати тестування?')) {
+
+			function scoreCounter(arr) {
+				let countTwos = 0
+				let countGood = 0
+				let countBelowAverage = 0
+
+				for (let i = 0; i < arr.length; i++) {
+					if (arr[i] <= 3) {
+						countTwos++
+					} else if (arr[i] <= 6) {
+						countBelowAverage++
+					}
+					else if (arr[i] <= 12) {
+						countGood++
+					}
+				}
+				return [countTwos, countGood, countBelowAverage]
+			}
+
+			let studentScores = [7, 9, 8, 2, 4, 9, 10]
+			let resultScoreCounter = scoreCounter(studentScores)
+
+			document.write(`
+				Кількість двійок: ${resultScoreCounter[0]}<br>
+				Кількість хороших оцінок (добре, відмінно): ${resultScoreCounter[1]}<br>
+				Кількість оцінок, які нижче середнього: ${resultScoreCounter[2]}<br>
+				`)
+		}
+	</script>
+</body>
+
+</html>

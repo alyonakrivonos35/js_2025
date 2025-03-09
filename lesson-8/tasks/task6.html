@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="../css/style.css">
+	<title>Задача 6</title>
+</head>
+
+<body>
+	<h1>Задача 6</h1>
+
+	<p>
+		Дано послідовність цін товарів та назв (у окремих масивах).
+		Вивести на екран ті, які може собі дозволити користувач (кількість грошей задається).
+
+	</p>
+
+	<script>
+
+		if (confirm('Почати тестування?')) {
+
+			function possibleToBuy(prices, titles, money) {
+				let goodsCanBeBought = []
+				for (let i = 0; i < prices.length; i++) {
+					if (prices[i] <= money) goodsCanBeBought.push(titles[i])
+				}
+				return goodsCanBeBought
+			}
+
+			let productsPrices = [1000, 20, 50, 150]
+			let productsTitles = ['сир', 'хліб', 'сік', 'кава']
+			let userMoney = parseFloat(prompt('Введіть суму, яку Ви маєте'))
+
+			document.write(`${possibleToBuy(productsPrices, productsTitles, userMoney)}`)
+
+		}
+
+	</script>
+</body>
+
+</html>

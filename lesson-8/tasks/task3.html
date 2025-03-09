@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="../css/style.css">
+	<title>Задача 3</title>
+</head>
+
+<body>
+	<h1>Задача 3</h1>
+
+	<p>
+		Дано масив імен учнів. З’ясувати скільки разів зустрічається ім’я «Іван».
+	</p>
+
+	<script>
+
+		if (confirm('Почати тестування?')) {
+			function countNumberOfSomeName(arr, name) {
+				let sum = 0
+				for (let i = 0; i < arr.length; i++) {
+					if (arr[i] === name) sum++
+				}
+				return sum
+			}
+
+			let arrStudentNames = ['Olena', 'Alex', 'Ivan', 'Anna', 'Ivan']
+
+			document.write(`Кількість учнів з ім’ям «Іван»: ${countNumberOfSomeName(arrStudentNames, 'Ivan')}`)
+		}
+
+	</script>
+</body>
+
+</html>

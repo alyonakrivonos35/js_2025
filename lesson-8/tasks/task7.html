@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="../css/style.css">
+	<title>Задача 7</title>
+</head>
+
+<body>
+	<h1>Задача 7</h1>
+
+	<p>
+		Дано послідовність платіжок протягом року. Знайти сумарну кількість грошей за:
+		1) за весь рік;
+		2) у першій половині року;
+		3) у другій половині року;
+		4) за літо;
+		5) за ІІ квартал;
+		6) за парні місяці (з парними номерами);
+		7) за місяці, які є початковими у сезоні (весна, літо, осінь, зима).
+
+	</p>
+
+	<script>
+
+		if (confirm('Почати тестування?')) {
+			let paymentsDuringTheYear = [1500, 1200, 1300, 800, 750, 790, 700, 645, 730, 870, 950, 1000]
+
+			//сумарна кількість грошей за період
+			function getSumMoney(arr, start, end) {
+				let sumMoney = 0
+				for (let i = start; i <= end; i++) {
+					sumMoney += arr[i]
+				}
+				return sumMoney
+			}
+
+			const moneyForTheYear = getSumMoney(paymentsDuringTheYear, 0, 11)	//сумарна кількість грошей за рік
+			const moneyFirstHalfYear = getSumMoney(paymentsDuringTheYear, 0, 5) // у першій половині року
+			const moneySecondHalfYear = getSumMoney(paymentsDuringTheYear, 6, 11) //у другій половині року
+			const moneyForTheSummer = getSumMoney(paymentsDuringTheYear, 5, 7) // за літо
+			const moneyForTheSecondQuarter = getSumMoney(paymentsDuringTheYear, 3, 5) // за ІІ квартал
+
+			//сумарна кількість грошей за парні місяці
+			function getMoneyForEvenMonths(arr) {
+				let sumMoney = 0
+				for (let i = 1; i < arr.length; i += 2) {
+					sumMoney += arr[i]
+				}
+				return sumMoney
+			}
+
+			const moneyForEvenMonths = getMoneyForEvenMonths(paymentsDuringTheYear) // за парні місяці
+			const moneyForBeginningSeasonMonths =
+				paymentsDuringTheYear[2] + paymentsDuringTheYear[5] + paymentsDuringTheYear[8] + paymentsDuringTheYear[11];
+
+			document.write(`
+				Cумарна кількість грошей за рік: ${moneyForTheYear}.<br>
+				Cумарна кількість грошей у першій половині року: ${moneyFirstHalfYear}.<br>
+				Cумарна кількість грошей у другій половині року: ${moneySecondHalfYear}.<br>
+				Cумарна кількість грошей за літо: ${moneyForTheSummer}.<br>
+				Cумарна кількість грошей за ІІ квартал: ${moneyForTheSecondQuarter}.<br>
+				Cумарна кількість грошей за парні місяці: ${moneyForEvenMonths}.<br>
+				Cумарна кількість грошей за місяці, які є початковими у сезоні: ${moneyForBeginningSeasonMonths}.<br>
+				`)
+		}
+
+	</script>
+</body>
+
+</html>
