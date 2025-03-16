@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="../css/style.css">
+	<title>Задача 5</title>
+</head>
+
+<body>
+	<h1>Задача 5</h1>
+
+	<p>
+		Дано масив елементів. Знайти добуток додатних елементів
+	</p>
+
+	<script>
+
+		if (confirm('Почати тестування?')) {
+			// Функція для створення масиву
+			function createRandomArr(length, minNum, maxNum) {
+				let randomArr = []
+
+				for (let i = 0; i < length; i++) {
+					let element = minNum + Math.floor(Math.random() * (maxNum - minNum + 1))
+					randomArr.push(element)
+				}
+				return randomArr
+			}
+
+			function getProductPositiveElements(arr) {
+				let result = 1
+
+				for (const el of arr) {
+					if (el > 0) result *= el
+				}
+
+				return result
+			}
+
+
+			const numberElements = parseInt(prompt('Введіть кількість елементів масиву'))
+			let userArr = createRandomArr(numberElements, -10, 10)
+			document.write(`${userArr}<br>`)
+			document.write(`добуток додатних елементів = ${getProductPositiveElements(userArr)}`)
+		}
+
+	</script>
+</body>
+
+</html>

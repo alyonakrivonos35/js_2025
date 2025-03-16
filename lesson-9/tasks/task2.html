@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="../css/style.css">
+	<title>Задача 2</title>
+</head>
+
+<body>
+	<h1>Задача 2</h1>
+
+	<p>
+		Користувач вводить кількість елементів.
+		Створити масив, у якому перша половина заповнена 1-цями, а друга
+		заповнена 7-ками.
+	</p>
+
+	<script>
+
+		if (confirm('Почати тестування?')) {
+			function createArr(length, value1 = 1, value2 = 7) {
+				let arr = new Array(length)
+				const halfArr = Math.floor(length / 2)
+
+				arr.fill(value1, 0, halfArr)
+				arr.fill(value2, halfArr)
+
+				return arr
+			}
+
+			const numberElements = parseInt(prompt('Введіть кількість елементів масиву'))
+			document.write(createArr(numberElements))
+		}
+
+	</script>
+</body>
+
+</html>

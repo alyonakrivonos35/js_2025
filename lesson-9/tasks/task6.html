@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="../css/style.css">
+	<title>Задача 6</title>
+</head>
+
+<body>
+	<h1>Задача 6</h1>
+
+	<p>
+		Дано масив елементів. Усі елементи, які більші за перший елемент помножити на 2
+	</p>
+
+	<script>
+
+		if (confirm('Почати тестування?')) {
+			// Функція для створення масиву
+			function createRandomArr(length, minNum, maxNum) {
+				let randomArr = []
+				for (let i = 0; i < length; i++) {
+					let element = minNum + Math.floor(Math.random() * (maxNum - minNum + 1))
+					randomArr.push(element)
+				}
+				return randomArr
+			}
+
+			function multiplyElements(arr, numMultiply = 2) {
+				arr.forEach(
+					(el, ind, arr) => {
+						if (el > arr[0]) {
+							arr[ind] *= numMultiply
+						}
+					})
+				return arr
+			}
+
+			const numberElements = parseInt(prompt('Введіть кількість елементів масиву'))
+			let userArr = createRandomArr(numberElements, 1, 10)
+			document.write(`${userArr}<br>`)
+			multiplyElements(userArr)
+			document.write(userArr)
+		}
+
+	</script>
+</body>
+
+</html>

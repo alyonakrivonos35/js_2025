@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="../css/style.css">
+	<title>Задача 10</title>
+</head>
+
+<body>
+	<h1>Задача 10</h1>
+
+	<p>
+		Дано масив цін у грн. Податок складає 20%. Сформувати масив,
+		який буде містити величину сплаченого податку у грн.
+	</p>
+
+	<script>
+
+		if (confirm('Почати тестування?')) {
+			// Функція для створення масиву
+			function createRandomArr(length, minNum, maxNum) {
+				let randomArr = []
+
+				for (let i = 0; i < length; i++) {
+					let element = minNum + Math.floor(Math.random() * (maxNum - minNum + 1))
+					randomArr.push(element)
+				}
+				return randomArr
+			}
+
+			const numberElements = parseInt(prompt('Введіть кількість елементів масиву'))
+			let pricesArr = createRandomArr(numberElements, 10, 1500)
+			document.write(`Масив цін: ${pricesArr}<br>`)
+			// -------------------------------------------------------------------------------
+
+			let tax = pricesArr.map((price) => price * 0.2)
+			document.write(`Величина сплаченого податку ${tax}<br>`)
+		}
+
+	</script>
+</body>
+
+</html>
