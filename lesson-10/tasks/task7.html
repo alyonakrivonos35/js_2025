@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="../css/style.css">
+	<title>Задача 7</title>
+</head>
+
+<body>
+	<h1>Задача 7</h1>
+
+	<p>
+		Дано історію цін на цінні папери за деякий період (згенерувати від 1 до 10000)
+		Визначати, чи усі ціни більше за 1000
+	</p>
+
+	<script>
+
+		if (confirm('Почати тестування?')) {
+			// Функція для створення масиву
+			function createRandomArr(length, minNum, maxNum) {
+				let randomArr = []
+				for (let i = 0; i < length; i++) {
+					let element = minNum + Math.floor(Math.random() * (maxNum - minNum + 1))
+					randomArr.push(element)
+				}
+				return randomArr
+			}
+			const numberElements = parseInt(prompt('Введіть кількість елементів масиву'))
+			let pricesArr = createRandomArr(numberElements, 1, 10000)
+			//------------------------------------------------------
+
+			function hasAllPricesOver1000(arr) {
+				return arr.every(element => element > 1000)
+			}
+
+			const priceBelow1000 = hasAllPricesOver1000(pricesArr)
+
+			document.write(`Масив з історію цін: ${pricesArr}<br>`)
+			document.write(`Чи усі ціни більше за 1000: ${priceBelow1000 ? 'Так' : 'Ні'}<br>`)
+		}
+
+	</script>
+</body>
+
+</html>

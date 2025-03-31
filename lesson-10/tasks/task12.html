@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="../css/style.css">
+	<title>Задача 12</title>
+</head>
+
+<body>
+	<h1>Задача 12</h1>
+
+	<p>
+		Дано історію цін на цінні папери за деякий період (згенерувати від 1 до 10000)
+		Знайти останню ціну, що більше за 1000
+	</p>
+
+	<script>
+
+		if (confirm('Почати тестування?')) {
+			// Функція для створення масиву
+			function createRandomArr(length, minNum, maxNum) {
+				let randomArr = []
+				for (let i = 0; i < length; i++) {
+					let element = minNum + Math.floor(Math.random() * (maxNum - minNum + 1))
+					randomArr.push(element)
+				}
+				return randomArr
+			}
+			const numberElements = parseInt(prompt('Введіть кількість елементів масиву'))
+			let pricesArr = createRandomArr(numberElements, 1, 10000)
+			//------------------------------------------------------
+
+			let lastPriceMore1000 = pricesArr.findLast(price => price > 1000)
+
+			document.write(`Масив з історію цін: ${pricesArr}<br>`)
+			document.write(`Остання ціна, що більше за 1000: ${lastPriceMore1000}<br>`)
+		}
+
+	</script>
+</body>
+
+</html>

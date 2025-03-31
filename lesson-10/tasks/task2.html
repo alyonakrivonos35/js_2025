@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="../css/style.css">
+	<title>Задача 2</title>
+</head>
+
+<body>
+	<h1>Задача 2</h1>
+
+	<p>
+		Дано історію цін на цінні папери за деякий період (згенерувати від 1 до 10000)
+		Сформувати новий масив, у якому є номери тільки тих, що більші за 1000 грн.
+
+	</p>
+
+	<script>
+
+		if (confirm('Почати тестування?')) {
+			// Функція для створення масиву
+			function createRandomArr(length, minNum, maxNum) {
+				let randomArr = []
+				for (let i = 0; i < length; i++) {
+					let element = minNum + Math.floor(Math.random() * (maxNum - minNum + 1))
+					randomArr.push(element)
+				}
+				return randomArr
+			}
+			const numberElements = parseInt(prompt('Введіть кількість елементів масиву'))
+			let pricesArr = createRandomArr(numberElements, 1, 10000)
+			//------------------------------------------------------
+
+			let indexOfPricesMore1000 = pricesArr.reduce((accum, price, ind) => {
+				if (price > 1000) accum.push(ind)
+				return accum
+			}, [])
+
+			document.write(`Масив з історію цін: ${pricesArr}<br>`)
+			document.write(`Масив з номерами елементів, що більші за 1000 грн: ${indexOfPricesMore1000}<br>`)
+		}
+
+	</script>
+</body>
+
+</html>

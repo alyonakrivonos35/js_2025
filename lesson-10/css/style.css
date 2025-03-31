@@ -1,0 +1,38 @@
+
+
+body {
+	background-color: #171717;
+	color: #ddd5d5;
+	font-size: 18px;
+	margin: 0 auto;
+	padding: 15px;
+}
+
+a {
+	color: #14b3b9;
+}
+
+table, th, td {
+	border: 1px solid;
+}
+
+th, td {
+	padding: 10px;
+}
+
+ol {
+	list-style-type: none;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 15px;
+	justify-content: center;
+	padding: 0;
+}
+
+li {
+	flex: 1 1 47%;
+	background-color: #312f2f;
+	border-radius: 10px;
+	padding: 10px;
+	border: 1px solid #14b3b9;
+}
