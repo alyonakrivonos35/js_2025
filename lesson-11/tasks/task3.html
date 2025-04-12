@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="../css/style.css">
+	<title>Задача 3</title>
+</head>
+
+<body>
+	<h1>Задача 3</h1>
+	<div>
+		Морський бій. Випадковим чином на двовимірному полі розміром 6*6 розташовується 5 кораблів.
+		Користувач стріляє вказуючи координати. Гра продовжується поки не потоплено усі кораблі
+		або у користувача не закінчаться снаряди.
+	</div>
+
+	<script>
+
+		if (confirm('Почати тестування?')) {
+
+			const fieldSize = 6
+			const shipsNum = 5
+			const maxShots = 10
+
+			//--- Функція, яка рандомно розставляє кораблі
+			function placeShip(arr, fieldSize, shipsNum) {
+				let placeShipCount = 0
+
+				while (placeShipCount < shipsNum) {
+					let row = Math.floor(Math.random() * fieldSize);
+					let col = Math.floor(Math.random() * fieldSize);
+					if (arr[row][col] === 'water') {
+						arr[row][col] = 'ship'
+						placeShipCount++
+					}
+				}
+			}
+
+			// функція для вивидення поля у вигляді таблиці
+			function renderField(field) {
+				let html = "<h3>Поле після гри:</h3><table border='1'>";
+				for (let row of field) {
+					html += "<tr>";
+					for (let cell of row) {
+						html += `<td>${cell}</td>`;
+					}
+					html += "</tr>";
+				}
+				html += "</table>";
+				document.write(`${html}`);
+			}
+
+			//--- створюємо поле, заповнюємо 'водою'
+			let field = []
+			for (let row = 0; row < fieldSize; row++) {
+				field.push(new Array(fieldSize).fill('water'))
+			}
+
+			// розставляємо кораблі
+			placeShip(field, fieldSize, shipsNum)
+
+			let shipsLeft = shipsNum;
+			let shotsLeft = maxShots;
+
+			while (shipsLeft > 0 && shotsLeft > 0) {
+				alert(`У Вас залишилося ${shotsLeft} снарядів і ${shipsLeft} кораблів на полі`)
+
+				// введення координат пострілу 
+				let row = parseInt(prompt(`Введіть номер рядка (від 0 до ${fieldSize - 1})`))
+				let col = parseInt(prompt(`Введіть номер стовпця (від 0 до ${fieldSize - 1})`))
+
+				// перевірка координат на коректність 
+				if (
+					row < 0 || row >= fieldSize ||
+					col < 0 || col >= fieldSize ||
+					isNaN(row) || isNaN(col)
+				) {
+					alert('Ви ввели невірні координати')
+					continue
+				}
+
+				// Перевірка чи користувач вже стріляв в клітинку
+				if (field[row][col] === 'hit' ||
+					field[row][col] === 'miss'
+				) {
+					alert('Ви вже стріляли сюди!')
+					continue;
+				}
+
+				// Перевірка влучення
+				if (field[row][col] === 'ship') {
+					alert('Влучили!!!')
+					field[row][col] = 'hit'
+					shipsLeft--
+				} else {
+					alert('Промах!')
+					field[row][col] = 'miss'
+				}
+
+				shotsLeft--
+			}
+
+			// результат
+			if (shipsLeft === 0) {
+				alert('Ви потопили всі кораблі!');
+			} else {
+				alert('У вас закінчилися снаряди');
+			}
+
+			// Виводимо поле
+			renderField(field);
+
+		}
+
+
+	</script>
+</body>
+
+</html>

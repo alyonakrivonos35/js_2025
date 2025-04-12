@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="../css/style.css">
+	<title>Задача 1</title>
+</head>
+
+<body>
+	<h1>Задача 1</h1>
+
+	<div>
+		Знайти суми елементів у вказаній області (зафарбована область охоплює відповідну половину рядків і стовпців)
+		<p>
+			1. номери рядків від 0 до половини, стовпці від 0 до половини.
+			<img src="../img/01.png" alt="01">
+		</p>
+		<p>
+			2. номери рядків від 0 до половини, стовпці від половини до кінця
+			<img src="../img/02.png" alt="02">
+		</p>
+		<p>
+			3. номери рядків (від половини до кінця, стовпці від 0 до половини)
+			<img src="../img/03.png" alt="03">
+		</p>
+		<p>
+			4. номери рядків від половини до кінця , стовпці від половини до кінця
+			<img src="../img/04.jpg" alt="04">
+		</p>
+		<p>5. Суму парних рядків</p>
+		<p>6. Суму непарних стовпців</p>
+		<p>7. У парних рядках – непарні стовпці, у непарних – парні.</p>
+	</div>
+
+	<script>
+
+		if (confirm('Почати тестування?')) {
+
+			let table = [
+				[41, 5, 22, 17, 9, 37],
+				[13, 58, 29, 2, 46, 30],
+				[11, 34, 6, 59, 21, 8],
+				[55, 4, 19, 26, 10, 32],
+				[27, 14, 50, 38, 3, 45],
+				[20, 7, 33, 25, 53, 16]
+			]
+
+			document.write('Масив:<br>')
+			for (let row of table) {
+				document.write(`${row}<br>`)
+			}
+
+			//------  Функція для знаходження суми  --------------------------------------
+
+			function sumElementsInSpecifiedArea(arr, rowStart, rowEnd, colsStart, colsEnd) {
+				let sum = 0
+				for (let rowIndex = rowStart; rowIndex < rowEnd; rowIndex++) {
+					for (let colIndex = colsStart; colIndex < colsEnd; colIndex++) {
+						sum += table[rowIndex][colIndex]
+					}
+				}
+				return sum
+			}
+
+			//------ 1 номери рядків від 0 до половини, стовпці від 0 до половини -------- 
+			const rowsHalf = Math.floor(table.length / 2)
+			const colsHalf = Math.floor(table[0].length / 2)
+			const sum1 = sumElementsInSpecifiedArea(table, 0, rowsHalf, 0, colsHalf)
+			document.write(`Сума 1 : ${sum1}<br>`)
+
+			//------ 2 номери рядків від 0 до половини, стовпці від половини до кінця -------- 
+			const sum2 = sumElementsInSpecifiedArea(table, 0, rowsHalf, colsHalf, table[0].length)
+			document.write(`Сума 2 : ${sum2}<br>`)
+
+			//------ 3 номери рядків (від половини до кінця, стовпці від 0 до половини) -------- 
+			const sum3 = sumElementsInSpecifiedArea(table, rowsHalf, table.length, 0, colsHalf)
+			document.write(`Сума 3 : ${sum3}<br>`)
+
+			//------ 4  номери рядків від половини до кінця , стовпці від половини до кінця -------- 
+			const sum4 = sumElementsInSpecifiedArea(table, rowsHalf, table.length, colsHalf, table[0].length)
+			document.write(`Сума 4 : ${sum4}<br>`)
+
+			//----- 5 Суму парних рядків ------------------------
+			const sumEvenRows = table.reduce((sum, row, rowIndex) => {
+				if (rowIndex % 2 === 0) {
+					for (let cell of row) {
+						sum += cell
+					}
+				}
+				return sum
+			}, 0)
+			document.write(`Сума 5 : ${sumEvenRows}<br>`)
+
+			//----- 6 Суму непарних стовпців ------------------------
+			const sumOddColumns = table.reduce((sum, row) => {
+				row.forEach((cell, index) => {
+					if (index % 2 !== 0) {
+						sum += cell
+					}
+				})
+				return sum
+			}, 0)
+			document.write(`Сума 6 : ${sumOddColumns}<br>`)
+
+			//-----7 У парних рядках – непарні стовпці, у непарних – парні -----------------
+			let sum7 = 0
+			table.forEach((row, rowIndex) => {
+				row.forEach((cell, cellIndex) => {
+					if (
+						(rowIndex % 2 === 0 && cellIndex % 2 !== 0) ||
+						(rowIndex % 2 !== 0 && cellIndex % 2 === 0)
+					) {
+						sum7 += cell
+					}
+				})
+			})
+			document.write(`Сума 7 : ${sum7}<br>`)
+		}
+
+
+	</script>
+</body>
+
+</html>
