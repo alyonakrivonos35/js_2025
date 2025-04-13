@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="../css/style.css">
+	<title>Задача 5</title>
+</head>
+
+<body>
+	<h1>Задача 5</h1>
+
+	<div>
+		Дано масив імен. Застосовуючи відповідне сортування та бінарний пошук визначити,
+		чи є у масиві ім’я «Olga» і підяким індексом.
+	</div>
+
+	<script>
+		if (confirm('Почати тестування?')) {
+			let arrNames = ['Anna', 'Oleksandr', 'Olena', 'Olga', 'Inna']
+			const searchName = 'Olga'
+
+			function sortArray(arr) {
+				let change
+				let endIndex = arr.length
+				do {
+					change = false
+					for (let i = 1; i < endIndex; i++) {
+						if (arr[i - 1] > arr[i]) {
+							const tmp = arr[i - 1]
+							arr[i - 1] = arr[i]
+							arr[i] = tmp
+							change = true
+						}
+					}
+					endIndex--
+				} while (change)
+				return arr
+			}
+
+			function findIndexBinarySearch(arr, searchElement) {
+				let start = 0
+				let end = arr.length - 1
+				while (start <= end) {
+					const middle = Math.floor((start + end) / 2)
+					if (arr[middle] === searchElement) return middle
+					if (arr[middle] < searchElement) start = middle + 1
+					if (arr[middle] > searchElement) end = middle - 1
+				}
+				return -1
+			}
+
+			const sortedArray = sortArray(arrNames)
+			const searchIndex = findIndexBinarySearch(sortedArray, searchName)
+
+			if (searchIndex !== -1) document.write(`${searchName} є в масиві під індексом ${searchIndex}`)
+			else document.write(`${searchName} немає в масиві`)
+		}
+
+
+	</script>
+</body>
+
+</html>

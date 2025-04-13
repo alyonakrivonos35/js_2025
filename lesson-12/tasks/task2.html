@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="../css/style.css">
+	<title>Задача 2</title>
+</head>
+
+<body>
+	<h1>Задача 2</h1>
+
+	<div>
+		Дано масив 30 випадкових цілих чисел.
+		Підрахувати скільки було обмінів та порівнянь чисел під час сортування
+		змішуванням.
+	</div>
+
+	<script>
+
+		if (confirm('Почати тестування?')) {
+			// Функція для створення масиву
+			function createRandomArr(length, minNum, maxNum) {
+				let randomArr = []
+
+				for (let i = 0; i < length; i++) {
+					let element = minNum + Math.floor(Math.random() * (maxNum - minNum + 1))
+					randomArr.push(element)
+				}
+				return randomArr
+			}
+
+			let arr = createRandomArr(30, 1, 100)
+			document.write(`Масив:<br> ${arr}<br>`)
+
+			//---------    сортування змішуванням     --------------------------------------------
+			function cocktailSortArray(arr) {
+				let leftIndex = 0
+				let rightIndex = arr.length - 1
+				let compareCount = 0   // кількість порівнянь
+				let changeCount = 0    // кількість обмінів
+
+				while (leftIndex < rightIndex) {
+					let changed = false
+					for (let i = leftIndex + 1; i <= rightIndex; i++) {
+						compareCount++
+						if (arr[i - 1] > arr[i]) {
+							let temp = arr[i - 1]
+							arr[i - 1] = arr[i]
+							arr[i] = temp
+							changed = true
+							changeCount++
+						}
+					}
+					rightIndex--
+					if (changed === false) break
+					// --- справа на ліво
+					changed = false
+					for (let i = rightIndex; i > leftIndex; i--) {
+						compareCount++
+						if (arr[i - 1] > arr[i]) {
+							let temp = arr[i - 1]
+							arr[i - 1] = arr[i]
+							arr[i] = temp
+							changed = true
+							changeCount++
+						}
+					}
+					leftIndex++
+					if (changed === false) break
+				}
+				return { arr, compareCount, changeCount }
+			}
+
+			let sortedArray = cocktailSortArray(arr)
+			document.write(`Масив після сортування змішуванням :<br> ${sortedArray.arr}<br>`)
+			document.write(`Кількість порівнянь = ${sortedArray.compareCount}<br>`)
+			document.write(`Кількість обмінів = ${sortedArray.changeCount}<br>`)
+		}
+
+
+	</script>
+</body>
+
+</html>

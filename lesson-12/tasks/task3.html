@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="../css/style.css">
+	<title>Задача 3</title>
+</head>
+
+<body>
+	<h1>Задача 3</h1>
+
+	<div>
+		Дано масив 30 випадкових цілих чисел.
+		Підрахувати скільки було обмінів та порівнянь чисел під час сортування включеннями.
+	</div>
+
+	<script>
+
+		if (confirm('Почати тестування?')) {
+			// Функція для створення масиву
+			function createRandomArr(length, minNum, maxNum) {
+				let randomArr = []
+
+				for (let i = 0; i < length; i++) {
+					let element = minNum + Math.floor(Math.random() * (maxNum - minNum + 1))
+					randomArr.push(element)
+				}
+				return randomArr
+			}
+
+			let arr = createRandomArr(30, 1, 100)
+			document.write(`Масив:<br> ${arr}<br>`)
+
+			//-----------  сортування включеннями  ------------------------------------------
+			function insertionSortArray(arr) {
+				let compareCount = 0
+				let changeCount = 0
+
+				for (let k = 1; k < arr.length; k++) {
+					const currentElement = arr[k]
+					let i = k - 1
+					while (i >= 0) {
+						compareCount++
+						if (arr[i] > currentElement) {
+							arr[i + 1] = arr[i]
+							i = i - 1
+							changeCount++
+						} else break
+					}
+
+					if (arr[i + 1] !== currentElement) {
+						arr[i + 1] = currentElement
+						changeCount++
+					}
+				}
+				return { arr, compareCount, changeCount }
+			}
+
+			let sortedArray = insertionSortArray(arr)
+			document.write(`Масив після сортування включеннями:<br> ${sortedArray.arr}<br>`)
+			document.write(`Кількість порівнянь = ${sortedArray.compareCount}<br>`)
+			document.write(`Кількість обмінів = ${sortedArray.changeCount}<br>`)
+		}
+
+
+	</script>
+</body>
+
+</html>

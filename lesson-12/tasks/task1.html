@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="../css/style.css">
+	<title>Задача 1</title>
+</head>
+
+<body>
+	<h1>Задача 1</h1>
+
+	<div>
+		Дано масив 30 випадкових цілих чисел.
+		Підрахувати скільки було обмінів та порівнянь чисел під час
+		сортування бульбашкою
+	</div>
+
+	<script>
+
+		if (confirm('Почати тестування?')) {
+			// Функція для створення масиву
+			function createRandomArr(length, minNum, maxNum) {
+				let randomArr = []
+
+				for (let i = 0; i < length; i++) {
+					let element = minNum + Math.floor(Math.random() * (maxNum - minNum + 1))
+					randomArr.push(element)
+				}
+				return randomArr
+			}
+
+			let arr = createRandomArr(30, 1, 100)
+			document.write(`Масив:<br> ${arr}<br>`)
+			//-----------------------------------------------------
+			function bubbleSortArray(arr) {
+				let change
+				let endIndex = arr.length
+				let compareCount = 0   // кількість порівнянь
+				let changeCount = 0    // кількість обмінів
+
+				do {
+					change = false
+					for (let i = 1; i < endIndex; i++) {
+						compareCount++
+						if (arr[i - 1] > arr[i]) {
+							const tmp = arr[i - 1]
+							arr[i - 1] = arr[i]
+							arr[i] = tmp
+							change = true
+							changeCount++
+						}
+					}
+					endIndex--
+				} while (change)
+				return { arr, compareCount, changeCount }
+			}
+
+			let sortedArray = bubbleSortArray(arr)
+
+			document.write(`Масив після сортування бульбашкою:<br> ${sortedArray.arr}<br>`)
+			document.write(`Кількість порівнянь = ${sortedArray.compareCount}<br>`)
+			document.write(`Кількість обмінів = ${sortedArray.changeCount}<br>`)
+		}
+
+
+	</script>
+</body>
+
+</html>
