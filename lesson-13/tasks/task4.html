@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="../css/style.css">
+	<title>Задача 4</title>
+</head>
+
+<body>
+	<h1>Задача 4</h1>
+
+	<div>
+		Дано масив хлопців і дівчат вивести всі можливі комбінації для танців з хлопців і дівчат.
+	</div>
+
+	<script>
+
+		if (confirm('Почати тестування?')) {
+			const boys = ["Олександр", "Іван", "Микита", "Артем", "Дмитро"]
+			const girls = ["Олена", "Марія", "Наталія", "Ірина", "Тетяна"]
+
+			let result = []
+
+			function generatePairs(boys, girls, boysIndex = 0, girlsIndex = 0) {
+				if (boysIndex >= boys.length) return // якщо усі хлопці перебрані return
+
+				// Перебираємо імена дівчат для поточного хлопця
+				if (girlsIndex < girls.length) {
+					result.push(`${boys[boysIndex]} та ${girls[girlsIndex]}`)
+					generatePairs(boys, girls, boysIndex, girlsIndex + 1) // наступна дівчина
+				}
+				else {
+					generatePairs(boys, girls, boysIndex + 1, 0) // наступний хлопець
+				}
+			}
+			generatePairs(boys, girls);
+
+			console.log(result)
+			result.forEach(pair => {
+				document.write(`<span>${pair}</span><br>`);
+			});
+		}
+
+
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="../css/style.css">
+	<title>Задача 5</title>
+</head>
+
+<body>
+	<h1>Задача 5</h1>
+
+	<div>
+		З використанням замикань розробити ітератор, тобто функцію, що буде поступово за окремими викликами видавати по
+		одне значення від заданого мінімального до заданого максимального. Якщо значення досягне максимального, то
+		наступним буде мінімальне значення. З використанням цієї функції реалізувати перебір номерів місяців.
+
+	</div>
+
+	<script>
+
+		if (confirm('Почати тестування?')) {
+			function getMonthCounter(min, max) {
+				let current = min
+
+				function getCurrentMonth() {
+					const res = current
+					current++
+					if (current > max) current = min
+					return res
+				}
+
+				return getCurrentMonth
+			}
+
+			const monthCount = getMonthCounter(1, 12)
+
+			for (let i = 1; i <= 13; i++) {
+				console.log(monthCount())
+			}
+		}
+
+
+	</script>
+</body>
+
+</html>

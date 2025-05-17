@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="../css/style.css">
+	<title>Задача 1</title>
+</head>
+
+<body>
+	<h1>Задача 2</h1>
+
+	<div>
+		Дано масив імен спортсменів. Розробити програму для виведення усіх можливих результатів змагань (списки
+		імен у відповідності до місць, які вони займуть).
+	</div>
+
+	<script>
+
+		if (confirm('Почати тестування?')) {
+
+			const athletesNames = ["Олександр", "Іван", "Микита"]
+
+			function getCompetitionResults(names) {
+				if (names.length === 1) return [names];
+				let result = []
+
+				for (let i = 0; i < names.length; i++) {
+					const currentName = names[i]
+					// Створюємо новий масив без поточного елемента
+					const remainingNames = names.slice(0, i).concat(names.slice(i + 1));
+
+					// Рекурсивно отримуємо всі перестановки для решти елементів
+					const accommodationOptions = getCompetitionResults(remainingNames);
+
+					// Додаємо поточний елемент до кожної з отриманих перестановок
+					for (const option of accommodationOptions) {
+						result.push([currentName, ...option]);
+					}
+				}
+
+				return result; // Повертаємо масив усіх перестановок
+			}
+
+			const resultsArr = getCompetitionResults(athletesNames)
+			console.log(resultsArr)
+		}
+
+
+	</script>
+</body>
+
+</html>

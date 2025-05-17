@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="../css/style.css">
+	<title>Задача 7</title>
+</head>
+
+<body>
+	<h1>Задача 7</h1>
+
+	<div>
+		Тренажер додавання. Кожні 10 секунд користувачу задають випадковий приклад з додавання двох цифр і робиться
+		перевірка.
+	</div>
+
+	<script>
+
+		if (confirm('Почати тестування?')) {
+			function startTrainer() {
+				setInterval(() => {
+					const a = Math.floor(Math.random() * 10)
+					const b = Math.floor(Math.random() * 10)
+					const correctAnswer = a + b
+
+					const userNum = prompt(`Скільки буде ${a} + ${b}?`)
+
+					if (userNum === null) {
+						return;
+					}
+
+					// Перевірка відповіді
+					if (parseInt(userNum) === correctAnswer) {
+						alert("Правильно!")
+					} else {
+						alert(`Неправильно. Відповідь: ${correctAnswer}`)
+					}
+				}, 10000); // кожні 10 секунд
+			}
+
+			startTrainer()
+		}
+
+
+	</script>
+</body>
+
+</html>
