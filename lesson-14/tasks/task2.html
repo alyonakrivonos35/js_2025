@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="../css/style.css">
+	<title>Задача 2</title>
+</head>
+
+<body>
+	<h1>Задача 2</h1>
+
+
+	<div>
+		Розробити функцію, у яку передають об’єкт (день, місяць, рік).
+		Визначити, який буде рік через N місяців.
+	</div>
+
+	<script>
+
+		if (confirm('Почати тестування?')) {
+			const date = { day: 18, month: 5, year: 2025 }
+
+			function getFutureYear({ month, year }, numMonths) {
+				let sumMonth = month + numMonths
+				year += Math.floor((sumMonth - 1) / 12)
+				return year
+			}
+
+			const futureYear = getFutureYear(date, 10)
+			console.log(futureYear)
+		}
+
+
+	</script>
+</body>
+
+</html>
